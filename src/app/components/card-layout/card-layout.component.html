@@ -1,0 +1,28 @@
+<div class="card-container">
+    <div *ngFor="let card of cards" class="card">
+        <mat-card appearance="outlined" [class.selected]="selectedCard === card" (click)="onClickCard($event, card)">
+            <mat-card-title>
+                <div class="c-pointer title" [routerLink]="card.viewRoute">
+                    {{ card.title }}
+                </div>
+                <div *ngIf="card.editRoute" [routerLink]="card.editRoute">
+                    <mat-icon class="material-icons-outlined c-pointer">edit</mat-icon>
+                </div>
+                <div *ngIf="customActionTemplate" (click)="$event.stopPropagation()">
+                    <ng-container *ngTemplateOutlet="customActionTemplate; context: card.customActionContext ?? { $implicit: card }"> </ng-container>
+                </div>
+            </mat-card-title>
+            <mat-chip-set *ngIf="card?.status">
+                <mat-chip class="status-{{card.statusSeverity}}" matTooltip="{{card.statusTooltip}}" >{{ card.status }}</mat-chip>
+            </mat-chip-set>
+            <mat-card-content>{{ card.subtitle }}</mat-card-content>
+            <ng-container *ngIf="card.actions">
+                <mat-card-actions align="end">
+                    <a *ngFor="let action of card.actions" (click)="onActionClicked(action)">
+                        <mat-icon>{{ action.icon }}</mat-icon>
+                    </a>
+                </mat-card-actions>
+            </ng-container>
+        </mat-card>
+    </div>
+</div>

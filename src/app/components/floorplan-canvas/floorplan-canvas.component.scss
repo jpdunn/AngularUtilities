@@ -1,0 +1,16 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .floorplan-container {
+        display: flex;
+        flex-grow: 1;
+    }
+
+    .lower-canvas {
+        background-size: 50px 50px;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+    }
+}

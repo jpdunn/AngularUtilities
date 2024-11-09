@@ -1,0 +1,84 @@
+<div class="toolbar">
+    <div class="left-section">
+        <button mat-icon-button (click)="onRoomClicked()" matTooltip="Add Room">
+            <mat-icon class="material-icons-outlined">square</mat-icon>
+        </button>
+
+        <button mat-icon-button (click)="onWallClicked()" matTooltip="Add Wall">
+            <mat-icon class="material-icons-outlined">horizontal_rule</mat-icon>
+        </button>
+
+        <button mat-icon-button (click)="onLabelClicked()" matTooltip="Add Label">
+            <mat-icon class="material-icons-outlined">text_format</mat-icon>
+        </button>
+
+        <button mat-icon-button (click)="onGroupClicked()" matTooltip="Group Items">
+            <mat-icon class="material-icons-outlined">group_add</mat-icon>
+        </button>
+
+        <button mat-icon-button (click)="onUngroupClicked()" matTooltip="Ungroup Items">
+            <mat-icon class="material-icons-outlined">group_remove</mat-icon>
+        </button>
+
+        <button mat-icon-button (click)="onSendToFrontClicked()" matTooltip="Send to Front">
+            <mat-icon class="material-icons-outlined">flip_to_front</mat-icon>
+        </button>
+
+        <button mat-icon-button (click)="onSendToBackClicked()" matTooltip="Send to Back">
+            <mat-icon class="material-icons-outlined">flip_to_back</mat-icon>
+        </button>
+
+        <button
+            mat-icon-button
+            (click)="onToggleSnappingClicked()"
+            *ngIf="!snappingEnabled"
+            matTooltip="Enable snapping"
+        >
+            <mat-icon class="material-icons-outlined">grid_off</mat-icon>
+        </button>
+
+        <button
+            mat-icon-button
+            (click)="onToggleSnappingClicked()"
+            *ngIf="snappingEnabled"
+            matTooltip="Disable snapping"
+        >
+            <mat-icon class="material-icons-outlined">grid_on</mat-icon>
+        </button>
+
+        <button mat-icon-button (click)="onDeleteClicked()" color="warn" matTooltip="Delete Item(s)">
+            <mat-icon class="material-icons-outlined">delete</mat-icon>
+        </button>
+    </div>
+
+    <div class="right-section">
+        <button mat-icon-button (click)="onZoomInClicked($event)" matTooltip="Zoom In">
+            <mat-icon class="material-icons-outlined">zoom_in</mat-icon>
+        </button>
+
+        <button mat-icon-button (click)="onZoomOutClicked($event)" matTooltip="Zoom Out">
+            <mat-icon class="material-icons-outlined">zoom_out</mat-icon>
+        </button>
+
+        <button
+            mat-icon-button
+            (click)="onPanClicked()"
+            [ngClass]="{ 'pan-active': panActive }"
+            matTooltip="{{ panActive ? 'Disable Pan' : 'Enable Pan' }}"
+        >
+            <mat-icon class="material-icons-outlined">pan_tool</mat-icon>
+        </button>
+
+        <button mat-icon-button (click)="onSaveClicked()" matTooltip="Save">
+            <mat-icon class="material-icons-outlined">save</mat-icon>
+        </button>
+
+        <button mat-icon-button (click)="onLeaveClicked()" matTooltip="Leave">
+            <mat-icon class="material-icons-outlined">exit_to_app</mat-icon>
+        </button>
+    </div>
+</div>
+
+<div #container class="floorplan-container">
+    <app-floorplan-canvas [snappingEnabled]="snappingEnabled"></app-floorplan-canvas>
+</div>

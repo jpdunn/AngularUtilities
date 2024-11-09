@@ -1,0 +1,69 @@
+<mat-toolbar class="fixed-element">
+    <button mat-icon-button (click)="toggleSidenav()">
+        <mat-icon>menu</mat-icon>
+    </button>
+
+    <div class="logo-wrapper">
+        <img src="assets/logo.svg" alt="Lynkz R&D Logo" width="120px" />
+    </div>
+
+    <span class="spacer"></span>
+    <div class="username-display">Username goes here</div>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>Logout</button>
+    </mat-menu>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav
+        mode="side"
+        opened
+        class="sidenav"
+        fixedInViewport
+        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ | async) ? 'over' : 'side'"
+        [opened]="(isHandset$ | async) === false"
+    >
+        <mat-nav-list>
+            <a mat-list-item routerLink="/floorplan-designer" routerLinkActive="active" class="list-item-content">
+                <mat-icon matListItemIcon class="material-icons-outlined">design_services</mat-icon>
+                <span matListItemTitle class="list-item"> Floorplanner </span>
+            </a>
+            <a mat-list-item routerLink="/image-uploader" routerLinkActive="active" class="list-item-content">
+                <mat-icon matListItemIcon class="material-icons-outlined">file_upload</mat-icon>
+                <span matListItemTitle class="list-item"> Image Uploader </span>
+            </a>
+            <a mat-list-item routerLink="/not-found" routerLinkActive="active" class="list-item-content">
+                <mat-icon matListItemIcon class="material-icons-outlined">warning_amber</mat-icon>
+                <span matListItemTitle class="list-item"> 404 Page </span>
+            </a>
+            <a mat-list-item routerLink="/signature-pad" routerLinkActive="active" class="list-item-content">
+                <mat-icon matListItemIcon class="material-icons-outlined">draw</mat-icon>
+                <span matListItemTitle class="list-item"> Signature Pad</span>
+            </a>
+            <a mat-list-item routerLink="/card-layout" routerLinkActive="active" class="list-item-content">
+                <mat-icon matListItemIcon class="material-icons-outlined">dashboard</mat-icon>
+                <span matListItemTitle class="list-item"> Card Layout</span>
+            </a>
+            <a mat-list-item routerLink="/banner" routerLinkActive="active" class="list-item-content">
+                <mat-icon matListItemIcon class="material-icons-outlined">info</mat-icon>
+                <span matListItemTitle class="list-item">Banner</span>
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <div class="wrapper">
+            <div class="main-container">
+                <div class="main-layout">
+                    <div class="view">
+                        <router-outlet *ngIf="!isIframe"></router-outlet>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,103 @@
+$card-border-radius: 8px;
+$card-padding: 16px;
+$ndc-blue: #3d7fff; // $ndc-blue A700
+$ndc-highlighted-blue: #e9eef5;
+$ndc-success: #0be881;
+$ndc-error: #ff4d4f;
+$ndc-warning: #ffda00;
+
+@mixin mat-card($width, $height) {
+    width: $width - $card-padding * 2 - 4;
+    height: $height - $card-padding * 2 - 4;
+    border: 2px solid transparent;
+    padding: $card-padding;
+    border-radius: $card-border-radius;
+    box-shadow: none;
+    filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.1));
+    margin: 8px;
+
+    mat-card-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .title:hover {
+            text-decoration: underline;
+        }
+        &:hover {
+            background-color: inherit;
+        }
+    }
+
+    mat-card-subtitle,
+    mat-card-subtitle:hover {
+        background-color: inherit;
+    }
+
+    &:hover {
+        background-color: #eaeaec;
+    }
+
+    mat-card-content {
+        padding: 0;
+    }
+}
+
+@mixin mat-card-outline($width, $height) {
+    margin: 5px;
+    width: $width;
+    height: $height;
+    border-radius: $card-border-radius;
+    cursor: pointer;
+    border: 1px dashed rgba(0, 0, 0, 0.2);
+    color: #969696;
+
+    span {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    :hover {
+        background-color: #eaeaec;
+    }
+}
+
+@mixin mat-card-selected() {
+    border-color: $ndc-blue;
+    background-color: $ndc-highlighted-blue;
+    box-shadow: none;
+    filter: none;
+}
+
+@mixin mat-card-status($color: $ndc-success) {
+    background-color: $color;
+    margin-right: 5px;
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+}
+
+@mixin mat-card-status-success($color: $ndc-success) {
+    background-color: $color;
+    margin-right: 5px;
+    margin-top: 0rem;
+    margin-bottom: 1rem;
+}
+
+@mixin mat-card-status-warning($color: $ndc-warning) {
+    background-color: $color;
+    margin-top: 0rem;
+    margin-bottom: 1rem;
+}
+
+@mixin mat-card-status-error($color: $ndc-error) {
+    background-color: $color;
+    margin-top: 0rem;
+    margin-bottom: 1rem;
+}
+
+@mixin mat-card-subtitle() {
+    height: 20px;
+}

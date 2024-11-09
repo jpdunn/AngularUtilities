@@ -1,0 +1,44 @@
+@import '../mixins.scss';
+
+$card-width: 270px;
+$card-height: 190px;
+
+.card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .card {
+        mat-card {
+            @include mat-card($card-width, $card-height);
+
+            &.selected {
+                @include mat-card-selected();
+            }
+
+            .status {
+                @include mat-card-status();
+            }
+
+            .status-success {
+                @include mat-card-status-success();
+            }
+
+            .status-nominal {
+                @include mat-card-status-success();
+            }
+
+            .status-warning {
+                @include mat-card-status-warning();
+            }
+
+            .status-error {
+                @include mat-card-status-error();
+            }
+
+            mat-card-subtitle {
+                @include mat-card-subtitle();
+            }
+        }
+    }
+}

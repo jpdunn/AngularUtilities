@@ -1,0 +1,110 @@
+.spacer {
+    flex: 1 1 auto;
+}
+
+.sidenav-container {
+    height: 100%;
+
+    .sidenav {
+        width: 200px;
+        position: fixed;
+        padding-top: 57px;
+    }
+
+    .list-item-content {
+        display: flex;
+        align-items: center;
+        height: 48px;
+
+        mat-icon {
+            // Override the color of the icons in the sidebar. Default nav lists such as this one
+            // make the icons gray which is not what we want. This override is not a penetrating style as we
+            // have full control over this element within the containing class.
+            color: rgba(0, 0, 0, 0.87);
+        }
+
+        .list-item {
+            margin-left: 10px;
+        }
+    }
+
+    mat-nav-list {
+        // Override the right margin that MDC sets by default on list items that contain icons.
+        // We have a small sidebar so we want to keep as much usable space as possible.
+        .mdc-list-item__start {
+            margin-right: 0 !important;
+        }
+    }
+}
+
+:host {
+    height: 100%;
+}
+
+.toolbar {
+    height: 48px;
+    grid-area: tlbr;
+    background-color: white;
+    border-bottom: 1px solid lightgrey;
+    display: flex;
+    justify-content: space-between;
+    background: white;
+
+    .info-icon {
+        display: flex;
+        align-self: center;
+        margin-right: 10px;
+    }
+
+    .right-section {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .main-container {
+        padding-top: 64px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+        height: calc(100% - 3.5em);
+
+        .main-layout {
+            display: grid;
+            grid-template-areas: 'tlbr tlbr' 'view info';
+            grid-template-columns: 1fr auto;
+            grid-template-rows: auto 1fr;
+            height: 100%;
+        }
+
+        .view {
+            grid-area: view;
+            overflow: auto;
+        }
+    }
+}
+
+.active {
+    background-color: #0000000a;
+}
+
+.fixed-element {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100% !important;
+    border-bottom: 1px solid lightgrey;
+}
+
+.logo-wrapper {
+    display: flex;
+    align-self: center;
+    margin-left: 15px;
+}

@@ -1,0 +1,14 @@
+.file-upload-wrapper {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    align-items: center;
+
+    &.fileover {
+        svg.svg-icon {
+            g {
+                fill: #3ba245;
+            }
+        }
+    }
+}

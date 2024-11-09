@@ -1,0 +1,17 @@
+section {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    height: 100%;
+}
+
+.verified {
+    color: rgba(0, 0, 0, 0.4);
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 200px;
+}
+
+.lg-100 {
+    font-size: 100px;
+}

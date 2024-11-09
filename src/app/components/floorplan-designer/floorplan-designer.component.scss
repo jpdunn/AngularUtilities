@@ -1,0 +1,40 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .floorplan-container {
+        width: 100%;
+        height: 100%;
+        border-top: 1px solid gray;
+    }
+}
+
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background-color: lightgray;
+    opacity: 0.2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .loading {
+        margin-bottom: 10px;
+    }
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px;
+
+    .pan-active {
+        color: rgb(77, 132, 250);
+    }
+}

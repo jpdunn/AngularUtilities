@@ -1,0 +1,38 @@
+<h1 mat-dialog-title>Upload Image</h1>
+<mat-divider></mat-divider>
+
+<mat-dialog-content>
+    <app-file-upload
+        (filesChange)="upload($event)"
+        action="Upload image"
+        fileTypes=".png, .jpg, .jpeg"
+        [disabled]="uploading"
+        *ngIf="!fileSelected"
+    ></app-file-upload>
+
+    <div class="preview-wrapper" *ngIf="uploadedImage">
+        <div class="image-wrapper">
+            <mat-icon class="cancel-icon" (click)="onCancelImageClicked()">cancel</mat-icon>
+            <img width="300px" alt="uploaded-image" [src]="uploadedImage" />
+        </div>
+    </div>
+
+    <div class="loading-overlay" *ngIf="saving">
+        <mat-spinner class="loading" [strokeWidth]="10"></mat-spinner>
+    </div>
+</mat-dialog-content>
+
+<div class="footer" mat-dialog-actions>
+    <button mat-raised-button (click)="onCancelClicked()" type="button">Cancel</button>
+    <button
+        mat-raised-button
+        color="primary"
+        [ngClass]="{ disabled: !fileSelected || saving }"
+        (click)="onUploadClicked()"
+        type="button"
+        [disabled]="!fileSelected || saving"
+    >
+        <span *ngIf="!saving"> Upload </span>
+        <span *ngIf="saving"> Uploading... </span>
+    </button>
+</div>
